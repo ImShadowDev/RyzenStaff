@@ -1,0 +1,289 @@
+###########################################################################################
+#                                                                                         #
+#  ██████╗ ██╗   ██╗███████╗███████╗███╗   ██╗ ███████╗████████╗ █████╗ ███████╗███████╗  #
+#  ██╔══██╗╚██╗ ██╔╝╚══███╔╝██╔════╝████╗  ██║ ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██╔════╝  #
+#  ██████╔╝ ╚████╔╝   ███╔╝ █████╗  ██╔██╗ ██║ ███████╗   ██║   ███████║█████╗  █████╗    #
+#  ██╔══██╗  ╚██╔╝   ███╔╝  ██╔══╝  ██║╚██╗██║ ╚════██║   ██║   ██╔══██║██╔══╝  ██╔══╝    #
+#  ██║  ██║   ██║   ███████╗███████╗██║ ╚████║ ███████║   ██║   ██║  ██║██║     ██║       #
+#  ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═══╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝       #
+#                                                                                         #
+###########################################################################################
+
+# General filter settings
+filter:
+  # Enable or disable the chat filter
+  enabled: false
+  # Should messages be completely blocked or just censored?
+  # true = block message, false = censor with stars
+  block-message: false
+  # Character used for censoring
+  censor-character: "*"
+  # Log violations to console
+  log-violations: false
+  # Notify staff members when violations occur
+  notify-staff: true
+  # Filter content in signs
+  filter-signs: true
+  # Filter content in books
+  filter-books: false
+  # Filter content in anvil renaming
+  filter-anvil: false
+  # Case sensitive filtering
+  case-sensitive: false
+  # Only match whole words (recommended: true)
+  whole-word-only: true
+  # Enable/disable IP filtering
+  filter-ips: true
+  # Enable/disable URL/domain filtering
+  filter-urls: true
+  # Enable/disable email filtering
+  filter-emails: true
+  # Enable/disable advertising patterns
+  filter-advertising: true
+  # Enable/disable spam patterns
+  filter-spam: true
+  # Enable/disable custom regex patterns
+  filter-custom-regex: false
+  # Enable/disable word replacements
+  enable-word-replacements: true
+
+# Anti-spam settings
+anti-spam:
+  # Maximum messages per second before triggering anti-spam
+  max-messages-per-second: 3
+  # Maximum similar messages before blocking
+  max-similar-messages: 2
+  # Time limit for duplicate message detection (in milliseconds)
+  duplicate-message-time-limit: 5000
+
+# Blacklisted words (will be censored or blocked)
+blacklisted-words:
+  - "fuck"
+  - "shit"
+  - "damn"
+  - "bitch"
+  - "asshole"
+  - "retard"
+  - "idiot"
+  - "stupid"
+  - "noob"
+  - "easy"
+  - "garbage"
+  - "loser"
+  - "suck"
+  - "kill yourself"
+  - "kys"
+  - "die"
+  - "suicide"
+  - "cancer"
+  - "autistic"
+  - "gay"
+  - "lesbian"
+  - "homo"
+  - "nigger"
+  - "faggot"
+  - "whore"
+  - "slut"
+  - "rape"
+  - "sex"
+  - "porn"
+  - "nude"
+  - "naked"
+  - "drugs"
+  - "weed"
+  - "cocaine"
+  - "heroin"
+  - "marijuana"
+  - "nazi"
+  - "hitler"
+  - "terrorist"
+  - "bomb"
+  - "explosion"
+  - "kill"
+  - "murder"
+  - "ddos"
+  - "dox"
+  - "swat"
+  - "leak"
+  - "password"
+  - "login"
+  - "account"
+  - "paypal"
+  - "credit card"
+  - "social security"
+
+# Advertising patterns (will be censored or blocked)
+advertising-patterns:
+  - "join.*server"
+  - "best.*server"
+  - "come.*play"
+  - "visit.*server"
+  - "play.*on"
+  - "server.*ip"
+  - "mc.*server"
+  - "minecraft.*server"
+  - "cracked.*server"
+  - "premium.*server"
+  - "survival.*server"
+  - "pvp.*server"
+  - "creative.*server"
+  - "skyblock.*server"
+  - "prison.*server"
+  - "factions.*server"
+  - "minigames.*server"
+  - "discord.*gg"
+  - "discord.*com"
+  - "teamspeak"
+  - "ts3"
+  - "youtube.*com"
+  - "youtu.*be"
+  - "twitch.*tv"
+  - "twitter.*com"
+  - "instagram.*com"
+  - "facebook.*com"
+  - "tiktok.*com"
+  - "snapchat"
+  - "whatsapp"
+  - "telegram"
+  - "reddit.*com"
+  - "subscribe"
+  - "follow.*me"
+  - "like.*video"
+  - "check.*out"
+  - "visit.*channel"
+  - "free.*money"
+  - "free.*coins"
+  - "free.*diamonds"
+  - "free.*items"
+  - "free.*ranks"
+  - "giveaway"
+  - "contest"
+  - "lottery"
+  - "raffle"
+  - "cheap.*ranks"
+  - "buy.*now"
+  - "discount"
+  - "sale"
+  - "50%.*off"
+  - "limited.*time"
+  - "paypal.*me"
+  - "cash.*app"
+  - "venmo"
+  - "bitcoin"
+  - "crypto"
+  - "real.*money"
+  - "irl.*money"
+  - "irl.*trade"
+  - "sell.*account"
+  - "buy.*account"
+
+# Spam patterns (additional patterns for spam detection)
+spam-patterns:
+  - "!!!!!+"
+  - "\\?\\?\\?\\?\\?+"
+  - "[A-Z]{10,}"
+  - "(..)\\1{4,}"
+  - "\\s{5,}"
+  - "[0-9]{10,}"
+  - "CAPS.*LOCK"
+  - "ATTENTION"
+  - "URGENT"
+  - "IMPORTANT"
+  - "READ.*THIS"
+  - "CLICK.*HERE"
+  - "MUST.*SEE"
+  - "AMAZING"
+  - "INCREDIBLE"
+  - "UNBELIEVABLE"
+  - "WOW"
+  - "OMG"
+  - "LOL{3,}"
+  - "HAHA{3,}"
+  - "XD{3,}"
+
+# Custom regex patterns for advanced filtering
+custom-regex-patterns:
+  # Patrones más específicos que excluyen dominios conocidos
+  - "\\b(?:https?://|ftp://)"
+  # Comentar o eliminar este patrón problemático:
+  # - "\\b[a-zA-Z0-9][-a-zA-Z0-9]*\\.[a-zA-Z]{2,}\\b"
+  - "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b"
+  - "\\b(?:play|join|visit)\\s+(?:at|on)?\\s*[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\\b"
+  - "\\b(?:discord|teamspeak|ts3?)\\s*(?:server)?\\s*:?\\s*[a-zA-Z0-9.-]+\\b"
+  - "\\b(?:youtube|twitch|instagram|twitter|tiktok)\\s*(?:channel|stream|page)?\\s*:?\\s*[a-zA-Z0-9._-]+\\b"
+  - "\\b(?:skype|telegram|whatsapp|snapchat)\\s*(?:username|id)?\\s*:?\\s*[a-zA-Z0-9._-]+\\b"
+
+# Word replacements (word -> replacement)
+word-replacements:
+  "ez": "gg"
+  "easy": "good game"
+  "noob": "new player"
+  "trash": "not good"
+  "garbage": "not good"
+  "suck": "need practice"
+  "rekt": "defeated"
+  "pwned": "defeated"
+  "n00b": "new player"
+  "scrub": "beginner"
+  "bot": "player"
+  "hacker": "suspicious player"
+  "cheater": "suspicious player"
+  "exploiter": "rule breaker"
+  "griefer": "rule breaker"
+  "spammer": "rule breaker"
+  "toxicplayer": "problematic player"
+
+# Messages sent to players
+messages:
+  message-blocked: "&c&l[FILTER] &cYour message was blocked by the chat filter."
+  message-filtered: "&e&l[FILTER] &eYour message has been filtered."
+  sign-blocked: "&c&l[FILTER] &cYour sign was blocked by the chat filter."
+  sign-filtered: "&e&l[FILTER] &eYour sign content has been filtered."
+  book-blocked: "&c&l[FILTER] &cYour book content was blocked by the chat filter."
+  book-filtered: "&e&l[FILTER] &eYour book content has been filtered."
+  book-title-blocked: "&c&l[FILTER] &cYour book title was blocked by the chat filter."
+  anvil-blocked: "&c&l[FILTER] &cYour item name was blocked by the chat filter."
+  staff-notification: "&c&l[FILTER] &e%player% &ctriggered filter: &f%reason%"
+  spam-detected: "&c&l[ANTI-SPAM] &cYou are sending messages too quickly! Please slow down."
+  duplicate-message: "&c&l[ANTI-SPAM] &cYou have already sent this message recently."
+
+# Advanced settings
+advanced:
+  # Check for similar messages (uses Levenshtein distance)
+  check-similar-messages: true
+  # Similarity threshold (0.0 to 1.0, where 1.0 is identical)
+  similarity-threshold: 0.8
+  # Maximum message length
+  max-message-length: 256
+  # Minimum message length
+  min-message-length: 1
+  # Block messages that are only numbers
+  block-number-only: false
+  # Block messages that are only special characters
+  block-special-chars-only: true
+  # Block messages with excessive capitalization
+  block-excessive-caps: true
+  # Maximum percentage of caps allowed
+  max-caps-percentage: 70
+  # Block repeated characters
+  block-repeated-chars: true
+  # Maximum repeated characters allowed
+  max-repeated-chars: 3
+  # Block excessive punctuation
+  block-excessive-punctuation: true
+  # Maximum punctuation characters allowed
+  max-punctuation: 10
+  # Whitelist for allowed domains/IPs (won't be filtered)
+  whitelisted-domains:
+    - "mojang.com"
+    - "github.com"
+    - "pastebin.com"
+    - "imgur.com"
+    - "gyazo.com"
+    - "youtube.com"
+    - "youtu.be"
+
+  # Players exempt from filtering (by permission)
+  exempt-permission: "ryzenstaff.chat.bypass"
+  # Log detailed information about filter matches
+  debug-logging: false

@@ -1,0 +1,429 @@
+###########################################################################################
+#                                                                                         #
+#  ██████╗ ██╗   ██╗███████╗███████╗███╗   ██╗ ███████╗████████╗ █████╗ ███████╗███████╗  #
+#  ██╔══██╗╚██╗ ██╔╝╚══███╔╝██╔════╝████╗  ██║ ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██╔════╝  #
+#  ██████╔╝ ╚████╔╝   ███╔╝ █████╗  ██╔██╗ ██║ ███████╗   ██║   ███████║█████╗  █████╗    #
+#  ██╔══██╗  ╚██╔╝   ███╔╝  ██╔══╝  ██║╚██╗██║ ╚════██║   ██║   ██╔══██║██╔══╝  ██╔══╝    #
+#  ██║  ██║   ██║   ███████╗███████╗██║ ╚████║ ███████║   ██║   ██║  ██║██║     ██║       #
+#  ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═══╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝       #
+#                                                                                         #
+###########################################################################################
+
+# Database Configuration (MySQL)
+# Set 'enabled' to false to use local storage
+database:
+  enabled: false
+  host: localhost
+  port: 3306
+  database: minecraft
+  username: root
+  password: password
+  table-prefix: ryzen_
+
+# --------------------------------------
+# Staff Chat Settings
+# --------------------------------------
+staff-chat:
+  prefix: "&8[&bSC&8]"
+  format: "%prefix% &3%player%&8: &b%message%"
+  permission: "ryzenstaff.staffchat"
+  command: "staffchat"
+  aliases:
+    - "sc"
+
+# --------------------------------------
+# Admin Chat Settings
+# --------------------------------------
+admin-chat:
+  prefix: "&8[&cAC&8]"
+  format: "%prefix% &4%player%&8: &c%message%"
+  permission: "ryzenstaff.adminchat"
+  command: "adminchat"
+  aliases:
+    - "ac"
+
+# --------------------------------------
+# Chat Control Settings
+# --------------------------------------
+chat-control:
+  enabled-by-default: true
+  default-slow-seconds: 5
+
+# --------------------------------------
+# Ask for help from the user staff
+# --------------------------------------
+support:
+  enabled: true
+  prefix: "&a[SUPPORT]"
+  cooldown: 60
+  aliases:
+    - "helpop"
+
+# Revive configuration
+revive:
+  enabled: true
+  # Maximum number of death records per player to save
+  max-records-per-player: 3
+  # Restore experience on revive
+  restore-xp: true
+  # Teleport the player to the place of their death upon revival
+  teleport-on-revive: false
+
+# --------------------------------------
+# Avoid kill farming towards the same player
+# --------------------------------------
+AntiSpamKills:
+  enabled: false
+  kills: 5
+  remove-time: 300
+  alert-staff: true
+  cancel-drops: true
+  cancel-xp: true
+
+# --------------------------------------
+# View the player's multi-accounts (linked to their IP)
+# --------------------------------------
+checkalts:
+  header: "&8&m--------------------------------"
+  footer: "&8&m--------------------------------"
+  title: "&e&lAlts of &f%player%"
+  no-alts: "&7No alternative accounts found."
+  online-format: "&e- &f%player% &7(Online)"
+  offline-format: "&e- &f%player% &7(Offline)"
+
+# --------------------------------------
+# SocialSpy
+# --------------------------------------
+socialspy:
+  commands-to-spy:
+    - "msg"
+    - "tell"
+    - "message"
+    - "whisper"
+    - "reply"
+    - "r"
+    - "pm"
+    - "w"
+    - "mail"
+    - "m"
+    - "t"
+    - "email"
+    - "action"
+    - "describe"
+    - "me"
+    - "pm"
+
+  # The default commands (Login, register etc) will no longer be excluded
+  excluded-commands:
+    - "login"
+    - "register"
+    - "changepassword"
+    - "cp"
+    - "unregister"
+    - "l"
+    - "reg"
+
+# --------------------------------------
+# STAFF MENTION
+# --------------------------------------
+staff-mention:
+  enabled: true
+  # Detect mentions without using @ (only the staff name)
+  detect-name-without-at: true
+  # Allow staff to mention themselves
+  allow-self-mention: true
+
+  # - "auto": Automatically selects the best sound for the version
+  # - Specific sound name (e.g., "NOTE_PLING", "BLOCK_NOTE_BLOCK_PLING")
+  sound: "auto"
+  sound-volume: 1.0
+  sound-pitch: 1.0
+
+  # Notification messages
+  send-notification-message: true
+  notification-message: |-
+    &3&m----------------------------
+    &b{sender} &7mentioned you in the chat
+    &bMessage: &7{message}
+    &3&m----------------------------
+
+  # ActionBar notification
+  send-actionbar: true
+  actionbar-message: "&e&lMENTION &8» &7{sender} has mentioned you"
+
+# disables the use of commands when in staff mode
+staffmode-commands:
+  - ec
+  - enderchest
+
+# --------------------------------------
+# Freeze Item
+# --------------------------------------
+freeze-item:
+  material: ICE
+  enabled: true
+  name: "&bFreeze Player"
+  lore:
+    - ""
+    - "&7Right click on a player to freeze him"
+    - "&7You will not be able to move while frozen."
+    - ""
+  slot: 4
+allowed-commands:
+  - msg
+  - tell
+  - r
+  - reply
+  - helpop
+  - report
+freeze-actionbar:
+  target: "&7¡You have been frozen! Time:&b %time%"
+  staff: "&c%player% has been frozen. Time:&b %time%"
+  chat-with-staff: "&8[&3&lFREEZE&8] &b%player% &8» &f%message%"
+freeze-settings:
+  allow-chat: true
+  helmet-ice: true
+  chat-with-staff: false
+
+# --------------------------------------
+# Reports Item
+# --------------------------------------
+reports-item:
+  enabled: true
+  material: PAPER
+  name: "&cView reports"
+  lore:
+    - ""
+    - "&7Click to view reports"
+    - "&7active on the server."
+    - ""
+  slot: 0
+
+# --------------------------------------
+# Configuring the Reports GUI
+# --------------------------------------
+reports-gui:
+  size: 54
+  filler:
+    material: STAINED_GLASS_PANE
+    amount: 1
+    data: 15
+    name: " "
+  main-menu:
+    title: "&c&lActive Reports &7(%count%)"
+    start-slot: 10
+    max-column: 8
+    max-slot: 43
+    no-reports:
+      material: BARRIER
+      amount: 1
+      data: 0
+      slot: 22
+      title: "&c&lThere are no reports"
+      lore: "&7There are no active reports."
+    player-head:
+      name: "&c%player%"
+      reports-count: "&7Active reports: &f%count%"
+      last-seen: "&7Last connection: &f%date%"
+      click-for-details: "&eClick to see details"
+    info-item:
+      material: BOOK
+      amount: 1
+      data: 0
+      slot: 49
+      title: "&e&lInformation"
+      total: "&7Total reports: &f%count%"
+      help: "&7Click on a player to see details."
+  player-menu:
+    title: "&c&lReports of %player%"
+    no-reports-message: "&cThere are no active reports for this player.."
+    start-slot: 10
+    max-column: 8
+    max-slot: 43
+    report-item:
+      material: PAPER
+      amount: 1
+      data: 0
+      name: "&eReport #{id}"
+      lore:
+        - "&7Reported by: &f%reporter%"
+        - "&7Reason: &f%reason%"
+        - "&7Date: &f%date%"
+        - "&7Last connection: &f%last-played%"
+        - ""
+        - "&aLeft click to teleport"
+        - "&cRight click to delete the report"
+    back-item:
+      material: ARROW
+      amount: 1
+      data: 0
+      slot: 49
+      name: "&a&lGo back"
+      lore: "&7Click to return to the list of reports."
+    delete-success: "&aReport successfully deleted."
+    delete-error: "&cThe report could not be deleted.."
+    teleport-success: "&aYou have teleported to &e{player}&a."
+    teleport-offline: "&cPlayer &e{player} &c is not online."
+    process-error: "&cAn error occurred while processing the report.."
+
+# Set to 0 to disable automatic cleaning
+auto-clear-reports: 259200
+
+# --------------------------------------
+# Vanish Item
+# --------------------------------------
+vanish-item:
+  enabled: true
+  material: "LIME_DYE"
+  material-disabled: "GRAY_DYE"
+  name-enabled: "&a&lVanish: &aEnabled"
+  name-disabled: "&c&lVanish: &cDisabled"
+  lore-enabled:
+    - "&7Click to disable vanish"
+    - "&aYou are currently invisible"
+  lore-disabled:
+    - "&7Click to enable vanish"
+    - "&cYou are currently visible"
+  slot: 2
+  permission-see: "ryzenstaff.vanish.see"
+
+# --------------------------------------
+# CheckAlts Item
+# --------------------------------------
+checkalts-item:
+  enabled: true
+  material: ENCHANTED_BOOK
+  name: "&e&lAlts Check"
+  lore:
+    - ""
+    - "&7Click to see your alts"
+    - "&7or click on a player to"
+    - "&7view your alternative accounts"
+    - ""
+  slot: 3
+
+# --------------------------------------
+# RandomTp ITEM
+# --------------------------------------
+randomtp-item:
+  enabled: true
+  material: EYE_OF_ENDER
+  name: "&a&lRANDOM TP"
+  lore:
+    - ""
+    - "&7Click to teleport"
+    - "&7a random player"
+    - ""
+  slot: 5
+
+randomtp:
+  # cooldown at 0 to disable
+  cooldown: 0
+  # Do not target staff
+  ignore-staff: true
+  # Notify the target
+  notify-target: false
+  # Notify other staff members
+  notify-staff: false
+  excluded-worlds:
+    - "world_the_end"
+    - "restricted_world"
+
+# --------------------------------------
+# Launch Item
+# --------------------------------------
+launch-item:
+  enabled: true
+  material: COMPASS
+  name: "&dLauncher"
+  lore:
+    - ""
+    - "&7Simple navigation item"
+    - "&7for the staff"
+    - ""
+  slot: 1
+
+# --------------------------------------
+# Cps check item
+# --------------------------------------
+cps-item:
+  enabled: true
+  material: WATCH
+  name: "&e&lCPS Check"
+  lore:
+    - ""
+    - "&7Right click on a player"
+    - "&7to check your CPS"
+    - "&7for 10 seconds"
+    - ""
+  slot: 6
+  duration: 10
+
+# --------------------------------------
+# Reach detector item
+# --------------------------------------
+reach-detector-item:
+  enabled: true
+  material: BLAZE_ROD
+  name: "&e&lReach Detector"
+  lore:
+    - ""
+    - "&7Right click on a player"
+    - "&7to monitor your reach during"
+    - "&7the set time"
+    - ""
+  slot: 7
+  duration: 10
+  # Reach greater than 3.1 blocks will display in red
+  warning-threshold: 3.1
+  # Reach between 3.0-3.1 will show in yellow
+  suspicious-threshold: 3.0
+
+# --------------------------------------
+# Examine itemel
+# --------------------------------------
+examine-item:
+  enabled: true
+  material: CHEST
+  name: "&6&lExamine Player"
+  lore:
+    - ""
+    - "&7Right click on a player"
+    - "&7to examine your inventory,"
+    - "&7health, food and active effects"
+    - ""
+  slot: 8
+
+# --------------------------------------
+# STAFF ARMOR
+# --------------------------------------
+staff-armor:
+  enabled: true
+  helmet:
+    material: "NONE"
+    name: "&9&lStaff &7Helmet"
+    lore:
+      - "&7You are in staff mode"
+      - "&7This armor identifies you as staff"
+
+  chestplate:
+    material: "NONE"
+    name: "&9&lStaff &7Chestplate"
+    lore:
+      - "&7You are in staff mode"
+      - "&7This armor identifies you as staff"
+
+  leggings:
+    material: "CHAINMAIL_LEGGINGS" # Pants material (use "NONE" to not equip)
+    name: "&9&lStaff &7Leggings" # Custom name (optional)
+    lore: # Custom Lore (optional)
+      - "&7You are in staff mode"
+      - "&7This armor identifies you as staff"
+    # data-value: 0  # Only for pre-1.13 versions if necessary
+
+  boots:
+    material: "NONE"
+    name: "&9&lStaff &7Boots"
+    lore:
+      - "&7You are in staff mode"
+      - "&7This armor identifies you as staff"

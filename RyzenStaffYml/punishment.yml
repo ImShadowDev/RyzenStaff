@@ -1,0 +1,85 @@
+###########################################################################################
+#                                                                                         #
+#  ██████╗ ██╗   ██╗███████╗███████╗███╗   ██╗ ███████╗████████╗ █████╗ ███████╗███████╗  #
+#  ██╔══██╗╚██╗ ██╔╝╚══███╔╝██╔════╝████╗  ██║ ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██╔════╝  #
+#  ██████╔╝ ╚████╔╝   ███╔╝ █████╗  ██╔██╗ ██║ ███████╗   ██║   ███████║█████╗  █████╗    #
+#  ██╔══██╗  ╚██╔╝   ███╔╝  ██╔══╝  ██║╚██╗██║ ╚════██║   ██║   ██╔══██║██╔══╝  ██╔══╝    #
+#  ██║  ██║   ██║   ███████╗███████╗██║ ╚████║ ███████║   ██║   ██║  ██║██║     ██║       #
+#  ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═══╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝       #
+#                                                                                         #
+###########################################################################################
+
+title: "&c&lPUNISHMENT GUI"
+slots: 54 #menu slots
+
+Next:
+  material: ARROW
+  name: "&bNext Page"
+  lore:
+    - "&7¡Click Here!"
+  slot: 53
+  page: 1
+  actions:
+    - "[OPEN_PAGE] 2"
+Previous:
+  material: ARROW
+  name: "&bPrevious Page"
+  lore:
+    - "&7¡Click Here!"
+  slot: 53
+  page: 2
+  actions:
+    - "[OPEN_PAGE] 1"
+
+# --------------------------------------
+# Punishment GUI Configuration
+# --------------------------------------
+
+Cheats:
+  material: BOOK
+  name: "&c&lCHEATS &7(15 days)"
+  lore:
+    - ""
+    - "&e&lBANNED INFO"
+    - " &7Duratión: &b15 days"
+    - " &7Reason: &bCheats"
+    - ""
+  slot: 0
+  page: 1
+  actions:
+    - "[PLAYER_COMMAND] tempban %player% 15d Cheats"
+    - "[MESSAGE] &7The player &b%player% &7was banned"
+    #- "[CONSOLE_COMMAND] TEMPBAN %player% 15d Chets"
+
+# --------------------------------------
+# You can add more following the same format.
+# --------------------------------------
+
+Spam:
+  material: BOOK
+  name: "&c&lSPAM &7(3h days)"
+  lore:
+    - ""
+    - "&e&lMUTE INFO"
+    - " &7Duratión: &b3h hours"
+    - " &7Reason: &bSpam"
+    - ""
+  slot: 0
+  page: 2
+  actions:
+    - "[PLAYER_COMMAND] tempban %player% 3h Spam"
+    - "[MESSAGE] &7The player &b%player% &7was muted"
+Flood:
+  material: BOOK
+  name: "&c&lFLOOD &7(3h days)"
+  lore:
+    - ""
+    - "&e&lMUTE INFO"
+    - " &7Duratión: &b3h hours"
+    - " &7Reason: &bFlood"
+    - ""
+  slot: 0
+  page: 2
+  actions:
+    - "[PLAYER_COMMAND] tempban %player% 3h Flood"
+    - "[MESSAGE] &7The player &b%player% &7was muted"

@@ -1,0 +1,226 @@
+###########################################################################################
+#                                                                                         #
+#  ██████╗ ██╗   ██╗███████╗███████╗███╗   ██╗ ███████╗████████╗ █████╗ ███████╗███████╗  #
+#  ██╔══██╗╚██╗ ██╔╝╚══███╔╝██╔════╝████╗  ██║ ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██╔════╝  #
+#  ██████╔╝ ╚████╔╝   ███╔╝ █████╗  ██╔██╗ ██║ ███████╗   ██║   ███████║█████╗  █████╗    #
+#  ██╔══██╗  ╚██╔╝   ███╔╝  ██╔══╝  ██║╚██╗██║ ╚════██║   ██║   ██╔══██║██╔══╝  ██╔══╝    #
+#  ██║  ██║   ██║   ███████╗███████╗██║ ╚████║ ███████║   ██║   ██║  ██║██║     ██║       #
+#  ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═══╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝       #
+#                                                                                         #
+###########################################################################################
+
+webhook-url: "YOUR_WEBHOOK_LINK"
+
+# --------------------------------------
+# Being able to activate and deactivate which options to use
+# --------------------------------------
+options:
+  reports: true
+  chat-control: true
+  freeze-control: true
+  antispam-kills: true
+  socialspy: true
+  support: true
+
+# --------------------------------------
+# Webhook messages Configuration
+# --------------------------------------
+messages:
+  # --------------------------------------
+  # Report System Webhook Configuration
+  # --------------------------------------
+  report:
+    embed:
+      title: ":warning: New Report of %player%"
+      description: |-
+        Player reported: **%player%**
+        Report reason: %reason%
+        Date: %datetime%
+      color: "#FF5555"
+      image: "https://cdn.discordapp.com/attachments/1352301828800516182/1373729893166092298/RyzenStaff-Webhooks.png?ex=682b7929&is=682a27a9&hm=477b3c513ca93e48d8f911264c3956e9b1a7fc032b3f123ca5a837a67a68a039&"
+      footer: "RyzenStaff Report System - %date%"
+      fields:
+        - name: ":bust_in_silhouette: Reported"
+          value: "%player%"
+          inline: true
+        - name: "️:man_detective:  Reported by"
+          value: "%reporter%"
+          inline: true
+        - name: ":star: Reason"
+          value: "%reason%"
+          inline: false
+
+  # --------------------------------------
+  # Chat Control System Webhook Configuration
+  # --------------------------------------
+  chat-control:
+    clear:
+      embed:
+        title: ":broom: Chat Cleared"
+        description: "The server chat has been cleared."
+        color: "#3498DB"
+        image: "https://cdn.discordapp.com/attachments/1352301828800516182/1373729893166092298/RyzenStaff-Webhooks.png?ex=682b7929&is=682a27a9&hm=477b3c513ca93e48d8f911264c3956e9b1a7fc032b3f123ca5a837a67a68a039&"
+        footer: "RyzenStaff Chat Control - %date%"
+        fields:
+          - name: ":shield: Staff Member"
+            value: "%staff%"
+            inline: true
+          - name: ":clock2: Time"
+            value: "%time%"
+            inline: true
+
+    toggle:
+      enable:
+        embed:
+          title: ":white_check_mark: Chat Enabled"
+          description: "The server chat has been enabled."
+          color: "#2ECC71"
+          image: "https://cdn.discordapp.com/attachments/1352301828800516182/1373729893166092298/RyzenStaff-Webhooks.png?ex=682b7929&is=682a27a9&hm=477b3c513ca93e48d8f911264c3956e9b1a7fc032b3f123ca5a837a67a68a039&"
+          footer: "RyzenStaff Chat Control - %date%"
+          fields:
+            - name: ":shield: Staff Member"
+              value: "%staff%"
+              inline: true
+            - name: ":clock2: Time"
+              value: "%time%"
+              inline: true
+      disable:
+        embed:
+          title: ":no_entry: Chat Disabled"
+          description: "The server chat has been disabled."
+          color: "#E74C3C"
+          image: "https://cdn.discordapp.com/attachments/1352301828800516182/1373729893166092298/RyzenStaff-Webhooks.png?ex=682b7929&is=682a27a9&hm=477b3c513ca93e48d8f911264c3956e9b1a7fc032b3f123ca5a837a67a68a039&"
+          footer: "RyzenStaff Chat Control - %date%"
+          fields:
+            - name: ":shield: Staff Member"
+              value: "%staff%"
+              inline: true
+            - name: ":clock2: Time"
+              value: "%time%"
+              inline: true
+
+    slow:
+      enable:
+        embed:
+          title: ":turtle: Slow Chat Enabled"
+          description: "Slow chat mode has been enabled with a cooldown of %seconds% seconds."
+          color: "#F1C40F"
+          image: "https://cdn.discordapp.com/attachments/1352301828800516182/1373729893166092298/RyzenStaff-Webhooks.png?ex=682b7929&is=682a27a9&hm=477b3c513ca93e48d8f911264c3956e9b1a7fc032b3f123ca5a837a67a68a039&"
+          footer: "RyzenStaff Chat Control - %date%"
+          fields:
+            - name: ":shield: Staff Member"
+              value: "%staff%"
+              inline: true
+            - name: ":hourglass: Cooldown"
+              value: "%seconds%s"
+              inline: true
+            - name: ":clock2: Time"
+              value: "%time%"
+              inline: true
+      disable:
+        embed:
+          title: ":dash: Slow Chat Disabled"
+          description: "Slow chat mode has been disabled."
+          color: "#3498DB"
+          image: "https://cdn.discordapp.com/attachments/1352301828800516182/1373729893166092298/RyzenStaff-Webhooks.png?ex=682b7929&is=682a27a9&hm=477b3c513ca93e48d8f911264c3956e9b1a7fc032b3f123ca5a837a67a68a039&"
+          footer: "RyzenStaff Chat Control - %date%"
+          fields:
+            - name: ":shield: Staff Member"
+              value: "%staff%"
+              inline: true
+            - name: ":clock2: Time"
+              value: "%time%"
+              inline: true
+
+  # --------------------------------------
+  # Freeze System Webhook Configuration
+  # --------------------------------------
+  freeze:
+    embed:
+      title: ":ice_cube: Player Frozen"
+      description: "A player has been frozen by a staff member."
+      color: "#FF5555"
+      image: "https://cdn.discordapp.com/attachments/1352301828800516182/1373729893166092298/RyzenStaff-Webhooks.png?ex=682b7929&is=682a27a9&hm=477b3c513ca93e48d8f911264c3956e9b1a7fc032b3f123ca5a837a67a68a039&"
+      footer: "RyzenStaff Freeze System - %date%"
+      fields:
+        - name: ":bust_in_silhouette: Player Frozen"
+          value: "%player%"
+          inline: true
+        - name: ":shield: Staff Member"
+          value: "%staff%"
+          inline: true
+        - name: ":clock2: Time"
+          value: "%time%"
+          inline: true
+
+  # --------------------------------------
+  # AntiSpam Kills System Webhook Configuration
+  # --------------------------------------
+  antispam-kills:
+    embed:
+      title: ":crossed_swords: Kill-Farming Detected"
+      description: "A player has been excessively killing the same target."
+      color: "#FF5555"
+      image: "https://cdn.discordapp.com/attachments/1352301828800516182/1373729893166092298/RyzenStaff-Webhooks.png?ex=682b7929&is=682a27a9&hm=477b3c513ca93e48d8f911264c3956e9b1a7fc032b3f123ca5a837a67a68a039&"
+      footer: "RyzenStaff AntiSpamKills - %date%"
+      fields:
+        - name: ":bust_in_silhouette: Killer"
+          value: "%player%"
+          inline: true
+        - name: ":skull: Victim"
+          value: "%target%"
+          inline: true
+        - name: ":repeat: Kill Count"
+          value: "%count%"
+          inline: true
+        - name: ":clock2: Time"
+          value: "%time%"
+          inline: true
+
+  # --------------------------------------
+  # SocialSpy Webhook Configuration
+  # --------------------------------------
+  socialspy:
+    embed:
+      title: ":eyes: SocialSpy Message Intercepted"
+      description: "A private message has been intercepted by SocialSpy."
+      color: "#9B59B6"
+      image: "https://cdn.discordapp.com/attachments/1352301828800516182/1373729893166092298/RyzenStaff-Webhooks.png?ex=682b7929&is=682a27a9&hm=477b3c513ca93e48d8f911264c3956e9b1a7fc032b3f123ca5a837a67a68a039&"
+      footer: "RyzenStaff SocialSpy - %date%"
+      fields:
+        - name: ":outbox_tray: Sender"
+          value: "%sender%"
+          inline: true
+        - name: ":inbox_tray: Receiver"
+          value: "%receiver%"
+          inline: true
+        - name: ":keyboard: Command"
+          value: "/%command%"
+          inline: true
+        - name: ":speech_balloon: Message"
+          value: "%message%"
+          inline: false
+
+  # --------------------------------------
+  # Support System Webhook Configuration
+  # --------------------------------------
+  support:
+    embed:
+      title: ":sos: Support Request"
+      description: "A player has requested help from the staff."
+      color: "#F1C40F"
+      image: "https://cdn.discordapp.com/attachments/1352301828800516182/1373729893166092298/RyzenStaff-Webhooks.png?ex=682b7929&is=682a27a9&hm=477b3c513ca93e48d8f911264c3956e9b1a7fc032b3f123ca5a837a67a68a039&"
+      footer: "RyzenStaff Support System - %date%"
+      fields:
+        - name: ":bust_in_silhouette: Player"
+          value: "%player%"
+          inline: true
+        - name: ":shield: Staff Status"
+          value: "%staff_status%"
+          inline: true
+        - name: ":speech_balloon: Support Message"
+          value: "%message%"
+          inline: false
+        - name: ":clock2: Date & Time"
+          value: "%datetime%"
+          inline: false

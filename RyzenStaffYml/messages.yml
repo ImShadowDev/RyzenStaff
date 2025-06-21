@@ -1,0 +1,283 @@
+###########################################################################################
+#                                                                                         #
+#  ██████╗ ██╗   ██╗███████╗███████╗███╗   ██╗ ███████╗████████╗ █████╗ ███████╗███████╗  #
+#  ██╔══██╗╚██╗ ██╔╝╚══███╔╝██╔════╝████╗  ██║ ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██╔════╝  #
+#  ██████╔╝ ╚████╔╝   ███╔╝ █████╗  ██╔██╗ ██║ ███████╗   ██║   ███████║█████╗  █████╗    #
+#  ██╔══██╗  ╚██╔╝   ███╔╝  ██╔══╝  ██║╚██╗██║ ╚════██║   ██║   ██╔══██║██╔══╝  ██╔══╝    #
+#  ██║  ██║   ██║   ███████╗███████╗██║ ╚████║ ███████║   ██║   ██║  ██║██║     ██║       #
+#  ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═══╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝       #
+#                                                                                         #
+###########################################################################################
+
+no-permission: "&cYou do not have permission to use this."
+player-not-found: "&cPlayer %player% not found."
+unknown-command: "&cUnknown command. Use /RyzenStaff help to see the list of commands."
+reload: "&aRyzenStaff configuration successfully reloaded!"
+console-command: "&cThis command can only be used by players."
+blocked-staff-command: "&cYou cannot use this command in staff mode.."
+
+staffmode:
+  enabled: "&aYou have activated staff mode."
+  disabled: "&cYou have deactivated staff mode."
+  cleaned-after-restart: "&eYour staff mode has been disabled due to server restart."
+
+revive-usage: "&cUsage: /revive <player>"
+revive-no-deaths: "&cNo death records found for %player%."
+revive-restored: "&aYou have successfully restored %player%'s inventory."
+revive-received: "&aYour inventory has been restored by %staff%."
+revive-world-not-found: "&cThe world %world% does not exist or is not loaded."
+revive-teleported: "&aYou have been teleported to the place where %player% died."
+revive-offline-player: "&eThe player is offline. Their inventory will be restored the next time they join."
+
+revive-menu:
+  title: "&8[&c&lRevive&8] &7%player%"
+  inventory-title: "&8[&e&lDeath Inventory&8] &7%player%"
+
+  close-button: "&c&lClose Menu"
+  back-button: "&e&lBack to Menu"
+  teleport-button: "&b&lTeleport to Death"
+  revive-button: "&a&lRevive Player"
+
+  death-item-name: "&c&lDeath #%index%"
+  death-item-lore:
+    - "&7Player: &f%player%"
+    - "&7Date: &f%date%"
+    - "&7Cause: &f%cause%"
+    - "&7Killer: &f%killer%"
+    - "&7World: &f%world%"
+    - "&7Coordinates: &f%coords%"
+    - "&7XP Level: &f%xp%"
+    - ""
+    - "&a► Left click to revive player"
+    - "&e► Right click to view inventory"
+
+  teleport-button-lore:
+    - "&7World: &f%world%"
+    - "&7Coordinates: &f%coords%"
+    - ""
+    - "&7Click to teleport to death location"
+
+  revive-button-lore:
+    - "&7Click to restore the player's"
+    - "&7inventory and experience"
+    - ""
+    - "&c⚠ &7This action cannot be undone"
+
+RyzenStaff-help:
+  - "&8&m---------------------------------"
+  - "&7- &b/ryzenstaff reload &8- &7Reload the configuration"
+  - "&7- &b/staffmode &8- &7Toggle staff mode"
+  - "&7- &b/freeze &8- &7freeze a player"
+  - "&7- &b/punishment <player> &8- &7punish a player"
+  - "&7- &b/checkalts <player> &8- &7check alternate accounts of a player"
+  - "&7- &b/vanish &8- &7Enabled/disable vanish mode"
+  - "&7- &b/revive <player> &8- &7Restore a player´s inventory"
+  - "&7- &b/reports &8- &7Open the reports management GUI"
+  - "&7- &b/examine <player> &8- &7Examine a player´s inventory and status"
+  - "&7- &b/randomtp &8- &7Teleport to a random player"
+  - "&7- &b/socialspy &8- &7Enable/disable socialspy"
+  - "&7- &b/staffchat &8- &7Toggle staff chat mode"
+  - "&7- &b/adminchat &8- &7Toggle admin chat mode"
+  - "&7- &b/ryzenstaff chat clear &8- &7clear the chat"
+  - "&7- &b/ryzenstaff chat toggle &8- &7enable/disable chat"
+  - "&7- &b/ryzenstaff chat slow <seconds> &8- &7put time on slow chat"
+  - "&7- &b/ryzenstaff chat announce <message> &8- &7announce a message"
+  - "&7- &b/ryzenstaff reach <player> &8- &7monitor reach of a player"
+  - "&7- &b/ryzenstaff cps <player> &8- &7monitor CPS of a player"
+  - "&8&m---------------------------------"
+freeze-usage: "&cUsage: /freeze <player>"
+freeze-staff: "&aYou have frozen %player%."
+freeze-target: |-
+  &f█████████
+  &c█████████
+  &f█████████
+  &f█████████
+  &f████&c█&f████
+  &f███&c█&0█&c█&f███      &7You have been frozen!
+  &f██&c█&6█&0█&6█&c█&f██      &7For the staff &b%staff%!
+  &f██&c█&6█&0█&6█&c█&f██
+  &f██&c█&6█&0█&6█&c█&f██
+  &f█&c█&6███&6██&c█&f█
+  &f█&c█&6██&0█&6██&c█&f█
+  &c█████████
+  &f█████████
+unfreeze-staff: "&8[&3&lFREEZE&8] &aYou have unfrozen %player%."
+unfreeze-target: "&8[&3&lFREEZE&8] &aYou have been unfrozen."
+freeze-bypass: "&8[&3&lFREEZE&8] &c%player% cannot be frozen."
+frozen-player-attack: "&8[&3&lFREEZE&8] &cThis player is frozen and cannot take damage."
+freeze-disconnect: "&c&lALERT: &f%player% &chas been disconnected while frozen!"
+frozen-chat-blocked: "&8[&3&lFREEZE&8] &cYou cannot chat while frozen."
+frozen-command-blocked: "&8[&3&lFREEZE&8] &cYou cannot use commands while frozen."
+frozen-teleport-blocked: "&8[&3&lFREEZE&8] &cYou cannot teleport while frozen."
+freeze-chat-notification: "&8[&3&lFREEZE&8] &7You can now chat with staff. Your messages will only be visible to staff members."
+freeze-staff-chat-notification: "&8[&3&lFREEZE&8] &b%player% &fcan now chat with staff. You will receive their messages."
+freeze-chat-deactivated: "&8[&3&lFREEZE&8] &7Staff chat has been deactivated. You can now chat normally."
+
+staffchat:
+  toggle-on: "&aStaff chat mode activated."
+  toggle-off: "&cStaff chat mode deactivated."
+
+adminchat:
+  toggle-on: "&aAdmin chat mode activated."
+  toggle-off: "&cAdmin chat mode deactivated."
+
+chat:
+  clear: "&7The chat has been cleaned by &b%player%&7."
+  enabled: "&aThe chat has been enabled by &b%player%&a."
+  disabled: "&cThe chat has been disabled by &b%player%&c."
+  slow-enabled: "&bSlow chat mode enabled by &e%player%&b. Cooldown: &e%seconds%s&b."
+  slow-disabled: "&bSlow chat mode disabled by &e%player%&b."
+  slow-message: "&cYou must wait &e%seconds% seconds &cto speak again."
+  disabled-message: "&cChat is currently disabled."
+  announcement-format: "&8&l[&c&lANNOUNCE&8&l] &r%message%"
+
+reports:
+  notification: "&c[Reports] &f%reporter% has reported &c%reported% &ffor: &c%reason%"
+  created: "&aYou have reported &e%player% &afor &e%reason%&a."
+  not-found: "&cPlayer &e%player% &cdoes not exist or has never joined the server."
+  usage: "&cUsage: /report <player> <reason>"
+  deleted: "&aReport successfully deleted."
+  delete-failed: "&cFailed to delete the report."
+  teleported: "&aYou have been teleported to &e%player%&a."
+  player-offline: "&cPlayer &e%player% &cis not online."
+  error: "&cAn error occurred while processing the report."
+  no-reports: "&cThere are no active reports for this player."
+  loaded: "%count% reports loaded."
+
+vanish:
+  enabled: "&aYou have enabled vanish mode. You are now invisible."
+  disabled: "&cYou have disabled vanish mode. You are now visible."
+  player-join: "&8[&e!&8] &7%player% &ehas joined the server. &8(Vanish)"
+  player-quit: "&8[&e!&8] &7%player% &ehas left the server. &8(Vanish)"
+  player-enabled-other: "&aYou have enabled vanish mode for &e%player%&a."
+  player-disabled-other: "&cYou have disabled vanish mode for &e%player%&c."
+  player-not-found: "&cPlayer &e%player% &cis not online."
+  player-list: "&aPlayers in vanish: &e%players%"
+
+checkalts:
+  usage: "&cUsage: /checkalts <player>"
+  checking: "&bChecking alternate accounts of &f%playe%r&b..."
+  player-not-found: "&cPlayer &f%player% &cnot found."
+  error: "&cAn error occurred while checking alternate accounts."
+  no-permission: "&cYou do not have permission to use this command."
+
+randomtp:
+  teleported: "&aYou have been teleported to &e%player%&a."
+  cooldown: "&cYou must wait &e%time% seconds &cbefore using randomtp again."
+  no-players: "&cThere are no players available to teleport to."
+  target-notification: "&e%staff% &ahas teleported to you."
+  staff-notification: "&8[&cStaff&8] &e%staff% &7teleported to &e%player%&7."
+  usage: "&cUsage: /randomtp"
+
+cps:
+  monitoring-start: "&aYou started monitoring the CPS of &e%player% &afor &e%duration% &aseconds."
+  monitoring-end: "&aCPS monitoring for &e%player% &ahas ended."
+  already-monitored: "&cThis player is already being monitored."
+  not-monitoring: "&cYou are not monitoring any player."
+  monitoring-cancelled: "&cCPS monitoring cancelled."
+  self-check: "&cYou cannot check your own CPS."
+  player-disconnect: "&cPlayer &e%player% &chas disconnected. Monitoring cancelled."
+  update: "&8[&eCPS&8] &f%player%: &e%cps% &fcps &7(%time%s)"
+  results:
+    header: "&8&m--------------------------------"
+    title: "&e&lCPS Results for %player%"
+    highest: "&7Highest CPS: &f%highest%"
+    average: "&7Average CPS: &f%average%"
+    total: "&7Total Clicks: &f%total%"
+    footer: "&8&m--------------------------------"
+
+reach-detector:
+  monitoring-start: "&aYou started monitoring reach of &e%player% &afor &e%duration% &aseconds."
+  monitoring-end: "&aReach monitoring for &e%player% &ahas ended."
+  waiting-for-hits: "&eWaiting for the player to hit others..."
+  already-monitored: "&cThis player is already being monitored."
+  monitoring-update: "&8[&eReach&8] &fMonitoring &e%player% &ffor &e%time%s &fmore..."
+  not-monitoring: "&cYou are not monitoring any player."
+  monitoring-cancelled: "&cReach monitoring cancelled."
+  self-check: "&cYou cannot monitor your own reach."
+  player-disconnect: "&cPlayer &e%player% &chas disconnected. Monitoring cancelled."
+  hit-detected: "&8[&eReach&8] &f%player% &7→ &f%target%&7: %distance% &7blocks"
+  no-hits: "&cNo hits were registered during the monitoring."
+  results:
+    header: "&8&m--------------------------------"
+    title: "&e&lReach Results for %player%"
+    highest: "&7Highest reach: %highest% &7blocks"
+    against: "&7Against: &f%target%"
+    average: "&7Average reach: &f%average% &7blocks"
+    total-hits: "&7Total hits: &f%total%"
+    footer: "&8&m--------------------------------"
+
+examine:
+  not-found: "&cPlayer &e%player% &cis not online."
+  error: "&cAn error occurred while examining the player."
+  usage: "&cusage: /examine <player>"
+
+support:
+  sent: "&aYour support request has been sent to the staff. Please wait."
+  cooldown: "&cYou must wait &e%time% seconds &cbefore sending another request."
+  no-staff-online: "&cNo staff members are online. Your message has been logged."
+  format: "%prefix% &e%player% &7needs help: &f%message%"
+  usage: "&cUsage: /support <message>"
+
+AntiSpamKills:
+  message-to-killer: "&cYou cannot keep killing %target% repeatedly. Please wait."
+  alert-staff: "&c%player% has killed &e%target% &c%count% times in a short period"
+
+socialspy:
+  enabled: "&a[SocialSpy] &7You have &aenabled &7SocialSpy."
+  disabled: "&c[SocialSpy] &7You have &cdisabled &7SocialSpy."
+  format: "&8[&bSocialSpy&8] &e%sender% &8→ &e%receiver%&8: &f%message%"
+
+chatfilter:
+  usage-add: "&cUsage: /chatfilter add <word>"
+  usage-remove: "&cUsage: /chatfilter remove <word>"
+  usage-test: "&cUsage: /chatfilter test <message>"
+
+  word-already-exists: "&cThe word '%word%' is already in the blacklist."
+  word-added: "&aThe word '%word%' has been added to the blacklist."
+  word-not-found: "&cThe word '%word%' is not in the blacklist."
+  word-removed: "&aThe word '%word%' has been removed from the blacklist."
+
+  list-empty: "&eThe blacklist is currently empty."
+  list-format:
+    - "&8&m--------------------------------"
+    - "&c&lBlacklisted Words &7(&e%count%&7)"
+    - "&8&m--------------------------------"
+  list-footer: "&8&m--------------------------------"
+  word-format: "&c{word}"
+  word-separator: "&7, "
+  words-per-line: 5
+
+  test-header:
+    - "&8&m--------------------------------"
+    - "&e&lChat Filter Test"
+    - "&8&m--------------------------------"
+  test-original: "&eOriginal Message: &f%message%"
+  test-allowed: "&aResult: &fAllowed (no changes)"
+  test-modified: "&eResult: &fModified"
+  test-filtered: "&eFiltered Message: &f%message%"
+  test-blocked: "&cResult: &fBlocked"
+  test-reason: "&cReason: &f%reason%"
+  test-footer: "&8&m--------------------------------"
+
+  status-header:
+    - "&8&m--------------------------------"
+    - "&c&lChat Filter Status"
+    - "&8&m--------------------------------"
+  status-enabled: "&aYes"
+  status-disabled: "&cNo"
+  status-filter-enabled: "&eFilter Enabled: %status%"
+  status-blacklisted-words: "&eBlacklisted Words: &f%count%"
+  status-filter-signs: "&eFilter Signs: %status%"
+  status-filter-books: "&eFilter Books: %status%"
+  status-filter-anvil: "&eFilter Anvil: %status%"
+  status-footer: "&8&m--------------------------------"
+
+  help:
+    - "&8&m--------------------------------"
+    - "&7- &b/chatfilter add <word> &8- &7Add a word to blacklist"
+    - "&7- &b/chatfilter remove <word> &8- &7Remove a word from blacklist"
+    - "&7- &b/chatfilter list &8- &7List all blacklisted words"
+    - "&7- &b/chatfilter test <message> &8- &7Test a message against the filter"
+    - "&7- &b/chatfilter status &8- &7Show filter status information"
+    - "&8&m--------------------------------"

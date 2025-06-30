@@ -9,6 +9,9 @@
 #                                                                                         #
 ###########################################################################################
 
+# Unique server name (important for cross-server)
+server-name: "Lobby"
+
 # Database Configuration (MySQL)
 # Set 'enabled' to false to use local storage
 database:
@@ -27,6 +30,7 @@ staff-chat:
   prefix: "&8[&bSC&8]"
   format: "%prefix% &3%player%&8: &b%message%"
   permission: "ryzenstaff.staffchat"
+  cross-server-format: "%prefix% &3%player% &8(&6%server%&8)&8: &b%message%"
   command: "staffchat"
   aliases:
     - "sc"
@@ -37,6 +41,7 @@ staff-chat:
 admin-chat:
   prefix: "&8[&cAC&8]"
   format: "%prefix% &4%player%&8: &c%message%"
+  cross-server-format: "%prefix% &4%player% &8(&6%server%&8)&8: &c%message%"
   permission: "ryzenstaff.adminchat"
   command: "adminchat"
   aliases:
@@ -61,13 +66,25 @@ support:
 
 # Revive configuration
 revive:
+  # Enable or disable the revive system
   enabled: true
-  # Maximum number of death records per player to save
-  max-records-per-player: 3
-  # Restore experience on revive
-  restore-xp: true
-  # Teleport the player to the place of their death upon revival
-  teleport-on-revive: false
+  # Maximum number of death records to keep per player
+  # Set to 0 for unlimited (not recommended)
+  max-records-per-player: 5
+  # Minutes after which death records expire and are automatically deleted
+  # Set to 0 to disable expiration
+  expire-after-minutes: 30
+  gui:
+    title: "&8Revive Menu"
+    # Number of rows in the GUI (3-6)
+    rows: 4
+  messages:
+    # Message sent to the player when they are revived
+    revived: "&aYou have been revived by %staff%"
+    # Message sent to staff when they successfully revive a player
+    revive-success: "&aYou have revived %player%"
+    # Message when no death records are found for a player
+    no-death-records: "&cNo death records found for %player%"
 
 # --------------------------------------
 # Avoid kill farming towards the same player
@@ -262,8 +279,8 @@ reports-gui:
       lore: "&7Click to return to the list of reports."
     delete-success: "&aReport successfully deleted."
     delete-error: "&cThe report could not be deleted.."
-    teleport-success: "&aYou have teleported to &e{player}&a."
-    teleport-offline: "&cPlayer &e{player} &c is not online."
+    teleport-success: "&aYou have teleported to &e%player%&a."
+    teleport-offline: "&cPlayer &e%player% &c is not online."
     process-error: "&cAn error occurred while processing the report.."
 
 # Set to 0 to disable automatic cleaning
@@ -380,7 +397,7 @@ reach-detector-item:
   suspicious-threshold: 3.0
 
 # --------------------------------------
-# Examine itemel
+# Examine item
 # --------------------------------------
 examine-item:
   enabled: true
@@ -393,6 +410,71 @@ examine-item:
     - "&7health, food and active effects"
     - ""
   slot: 8
+
+# --------------------------------------
+# Teleport Item
+# --------------------------------------
+teleport-item:
+  enabled: false
+  material: ENDER_PEARL
+  name: "&d&lTeleport Menu"
+  lore:
+    - ""
+    - "&7Click to open the teleport menu"
+    - "&7and teleport to any online player"
+    - ""
+  slot: 8
+
+# --------------------------------------
+# Teleport GUI Configuration
+# --------------------------------------
+teleport-gui:
+  title: "&8Teleport Menu"
+  exclude-self: false
+  notify-target: false
+
+  max-players-per-page: 45 # Maximum number of players per page (recommended: 45 to leave room for navigation)
+
+  player-head:
+    name: "&e%player%"
+    lore:
+      - "&7World: &f%world%"
+      - "&7Gamemode: &f%gamemode%"
+      - "&7Health: &f%health%"
+      - "&7Food: &f%food%"
+      - ""
+      - "&eClick to teleport!"
+
+  navigation:
+    previous:
+      material: "ARROW"
+      data: 0 # For pre-1.13 versions
+      name: "&e← Previous Page"
+      lore:
+        - "&7Click to go to the"
+        - "&7previous page"
+
+    next:
+      material: "ARROW"
+      data: 0 # For pre-1.13 versions
+      name: "&eNext Page →"
+      lore:
+        - "&7Click to go to the"
+        - "&7next page"
+
+    page-info:
+      material: "PAPER"
+      data: 0  # For pre-1.13 versions
+      name: "&ePage %current%/%total%"
+      lore:
+        - "&7You are viewing page"
+        - "&7%current% of %total% pages"
+
+  filler:
+    enabled: false
+    material: "STAINED_GLASS_PANE"
+    data: 7  # Gray glass pane for pre-1.13 versions
+    name: " "
 
 # --------------------------------------
 # STAFF ARMOR
@@ -427,3 +509,63 @@ staff-armor:
     lore:
       - "&7You are in staff mode"
       - "&7This armor identifies you as staff"
+
+# --------------------------------------
+# WARN SYSTEM
+# --------------------------------------
+warn:
+  expire-days: 7 # Days after which warnings expire (0 = never expire)
+
+  # Notify staff when someone is warned
+  notify-staff: true
+
+  # Automatic actions based on the number of warnings
+  auto-actions:
+    enabled: true
+    actions:
+      # Format: "warn_numer:command"
+      - "3:kick %player% You have been kicked for receiving 3 warnings"
+      - "5:tempban %player% 1d You have been banned for 1 day for receiving 5 warnings"
+      - "10:ban %player% You have been permanently banned for receiving 10 warnings"
+
+# --------------------------------------
+# JAIL SYSTEM
+# --------------------------------------
+jail:
+  enabled: true
+  notify-staff: true
+  log-blocked-commands: false
+  # Maximum distance a player can move from jail point (in blocks)
+  max-distance: 5.0
+  # Jail duration limits (in minutes)
+  min-duration: 5
+  max-duration: 10080  # 7 days
+  # Sound effects for jail/unjail
+  sound:
+    enabled: true
+    jail-sound: ENTITY_VILLAGER_NO
+    unjail-sound: ENTITY_PLAYER_LEVELUP
+    volume: 1.0
+    pitch: 1.0
+  # Particle effects
+  particles:
+    enabled: false
+    type: SMOKE_NORMAL
+    amount: 20
+    interval: 20  # ticks
+  # Potion effects in jail
+  effects:
+    - effect: SLOW
+      amplifier: 0
+      ambient: true
+    - effect: WEAKNESS
+      amplifier: 0
+      ambient: true
+  # Restriction options
+  restrictions:
+    block-commands: true
+    block-chat: false
+    block-movement: false
+    block-combat: true
+    block-building: true
+    block-items: true

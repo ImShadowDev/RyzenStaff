@@ -21,47 +21,19 @@ staffmode:
   disabled: "&cYou have deactivated staff mode."
   cleaned-after-restart: "&eYour staff mode has been disabled due to server restart."
 
-revive-usage: "&cUsage: /revive <player>"
-revive-no-deaths: "&cNo death records found for %player%."
-revive-restored: "&aYou have successfully restored %player%'s inventory."
-revive-received: "&aYour inventory has been restored by %staff%."
-revive-world-not-found: "&cThe world %world% does not exist or is not loaded."
-revive-teleported: "&aYou have been teleported to the place where %player% died."
-revive-offline-player: "&eThe player is offline. Their inventory will be restored the next time they join."
-
-revive-menu:
-  title: "&8[&c&lRevive&8] &7%player%"
-  inventory-title: "&8[&e&lDeath Inventory&8] &7%player%"
-
-  close-button: "&c&lClose Menu"
-  back-button: "&e&lBack to Menu"
-  teleport-button: "&b&lTeleport to Death"
-  revive-button: "&a&lRevive Player"
-
-  death-item-name: "&c&lDeath #%index%"
-  death-item-lore:
-    - "&7Player: &f%player%"
-    - "&7Date: &f%date%"
-    - "&7Cause: &f%cause%"
-    - "&7Killer: &f%killer%"
-    - "&7World: &f%world%"
-    - "&7Coordinates: &f%coords%"
-    - "&7XP Level: &f%xp%"
-    - ""
-    - "&a► Left click to revive player"
-    - "&e► Right click to view inventory"
-
-  teleport-button-lore:
-    - "&7World: &f%world%"
-    - "&7Coordinates: &f%coords%"
-    - ""
-    - "&7Click to teleport to death location"
-
-  revive-button-lore:
-    - "&7Click to restore the player's"
-    - "&7inventory and experience"
-    - ""
-    - "&c⚠ &7This action cannot be undone"
+revive:
+  # Message sent to player when revived
+  revived: "&7You have just been revived by the staff &b%staff%&7."
+  # Message sent to staff member who performed the revive
+  revive-success: "&7You have successfully revived &b%player%&7."
+  # Message when no death records found
+  no-death-records: "&7No death records found for &c%player%&7."
+  # Message when revive system is disabled
+  system-disabled: "&7The revive system is currently disabled."
+  # Message when target player is not online for GUI
+  target-offline: "&7The target player is not online and cannot be revived."
+  # Message when data is corrupted or expired
+  data-corrupted: "&7Failed to revive the player. The data may be corrupted or expired."
 
 RyzenStaff-help:
   - "&8&m---------------------------------"
@@ -281,3 +253,100 @@ chatfilter:
     - "&7- &b/chatfilter test <message> &8- &7Test a message against the filter"
     - "&7- &b/chatfilter status &8- &7Show filter status information"
     - "&8&m--------------------------------"
+
+warn:
+  usage:
+    - "&8&m--------------------------------"
+    - "&7- &b/warn <player> <reason> &8- &7Warn a player"
+    - "&7- &b/warn remove <player> <amount> &8- &7Remove warnings"
+    - "&7- &b/warn clear <player> &8- &7Clear all warnings"
+    - "&7- &b/warn check <player> &8- &7Check player warnings"
+    - "&8&m--------------------------------"
+
+  usage-warn: "&cUsage: /warn <player> <reason>"
+  usage-remove: "&cUsage: /warn remove <player> <amount>"
+  usage-clear: "&cUsage: /warn clear <player>"
+  usage-check: "&cUsage: /warn check <player>"
+
+  warned: "&aYou have warned &e%player% &afor: &e%reason% &7(Total: %total%)"
+  received: "&cYou have been warned by &e%staff% &cfor: &e%reason% &7(Total: %total%)"
+  staff-notification: "&8[&c&lWARN&8] &e%staff% &7warned &e%player% &7for: &f%reason% &7(Total: %total%)"
+  self-warn: "&cYou cannot warn yourself."
+
+  removed: "&aRemoved &e%amount% &awarnings from &e%player%&a. Remaining: &e%remaining%"
+  cleared: "&aCleared &e%total% &awarnings from &e%player%&a."
+
+  no-warns: "&a%player% has no active warnings."
+  check-header:
+    - "&8&m--------------------------------"
+    - "&c&lWarnings for &f%player% &7(%total%)"
+    - "&8&m--------------------------------"
+  check-format: "&c#{id} &7- &f%reason% &7by &e%staff% &7on &f%date%"
+  check-footer:
+    - "&8&m--------------------------------"
+
+jail:
+  usage:
+    - "&c&m---------------------------------------"
+    - "&cJail Commands:"
+    - "&b/jail <player> <time> [reason] &8- &7Send a player to jail"
+    - "&b/jail check <player> &8- &7Check player's jail status"
+    - "&b/jail list &8- &7Show list of jailed players"
+    - "&b/unjail <player> &8- &7Release a player from jail"
+    - "&b/setjail &8- &7Set jail location"
+    - "&c&m---------------------------------------"
+  usage-jail: "&cUsage: /jail <player> <time> [reason]"
+  usage-check: "&cUsage: /jail check <player>"
+  usage-unjail: "&cUsage: /unjail <player>"
+
+  jailed: "&aYou have jailed &e%player% &afor &e%time% &aReason: &e%reason%"
+  received: "&cYou have been jailed by &e%staff% &cfor &e%time%\n&cReason: &e%reason%"
+  staff-notification: "&e%staff% &7jailed &e%player% &7for &f%time% &7- &f%reason%"
+  unjailed: "&aYou have released &e%player% &afrom jail"
+  released: "&aYou have been released from jail by &e%staff%&a"
+  unjail-notification: "&e%staff% &7released &e%player% &7from jail"
+  time-expired: "&aYour jail time has expired. You have been released."
+
+  already-jailed: "&c%player% is already in jail"
+  not-jailed: "&c%player% is not in jail"
+  location-not-set: "&cJail location is not set. Use /setjail first."
+  location-set: "&aJail location has been set at: &e%world% %x%, %y%, %z%"
+
+  cannot-leave: "&cYou cannot leave the jail area while imprisoned"
+  cannot-teleport: "&cYou cannot teleport while in jail"
+  command-blocked: "&cYou cannot use commands while in jail"
+  join-message: "&cYou are still in jail. Time remaining: &e%time_left%"
+
+  # Jail info
+  info:
+    - "&c&m---------------------------------------"
+    - "&cJail Information:"
+    - "&7- Player: &e%player%"
+    - "&7- Staff: &e%staff%"
+    - "&7- Reason: &e%reason%"
+    - "&7- Start: &e%start_time%"
+    - "&7- End: &e%end_time%"
+    - "&7- Time remaining: &e%time_left%"
+    - "&c&m---------------------------------------"
+
+  # Jailed list
+  no-jailed-players: "&aThere are no players in jail"
+  list-header:
+    - "&c&m---------------------------------------"
+    - "&cJailed players: &e%count%"
+  list-format: "&7- &e%player% &7(&f%time_left%&7) - &f%reason%"
+
+  # Allowed commands in jail
+  allowed-commands:
+    - "/msg"
+    - "/r"
+    - "/tell"
+    - "/helpop"
+    - "/report"
+
+teleport:
+  success: "&aYou have teleported to %player%."
+  player-not-found: "&cPlayer %player% is not online."
+  player-offline: "&cPlayer %player% is no longer online."
+  target-notified: "&e%staff% has teleported to you."
+  error: "&cAn error occurred while teleporting."

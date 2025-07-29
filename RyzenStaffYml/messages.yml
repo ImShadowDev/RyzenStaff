@@ -298,6 +298,7 @@ jail:
   usage-jail: "&cUsage: /jail <player> <time> [reason]"
   usage-check: "&cUsage: /jail check <player>"
   usage-unjail: "&cUsage: /unjail <player>"
+  bypass-protection: "&c%player% has jail bypass protection and cannot be jailed."
 
   jailed: "&aYou have jailed &e%player% &afor &e%time% &aReason: &e%reason%"
   received: "&cYou have been jailed by &e%staff% &cfor &e%time%\n&cReason: &e%reason%"

@@ -569,3 +569,6 @@ jail:
     block-combat: true
     block-building: true
     block-items: true
+  # Commands that are executed when a user finishes jail time
+  unjail-commands:
+    - "spawn %player%"

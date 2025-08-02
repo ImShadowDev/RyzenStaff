@@ -42,7 +42,7 @@ public class RyzenStaffApi {
         }
     }
 
-    // --- Reportes ---
+    // --- Reports ---
     public boolean createReport(Player reporter, String targetName, String reason) {
         return ReportSystem.createReport(reporter, targetName, reason);
     }
@@ -54,4 +54,5 @@ public class RyzenStaffApi {
         }
         return dev.imshadow.StaffSystem.VanishSystem.isVanished(player);
     }
+
 }

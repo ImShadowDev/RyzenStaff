@@ -402,3 +402,14 @@ teleport:
   player-offline: "&cPlayer %player% is no longer online."
   target-notified: "&e%staff% has teleported to you."
   error: "&cAn error occurred while teleporting."
+
+placeholders:
+  chat:
+    enabled: "Enabled"
+    disabled: "Disabled"
+  jail:
+    not-jailed: "Not jailed"
+    is-jailed-true: "true"
+    is-jailed-false: "false"
+    not-available: "N/A"
+

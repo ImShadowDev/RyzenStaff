@@ -84,6 +84,7 @@ frozen-teleport-blocked: "&8[&3&lFREEZE&8] &cYou cannot teleport while frozen."
 freeze-chat-notification: "&8[&3&lFREEZE&8] &7You can now chat with staff. Your messages will only be visible to staff members."
 freeze-staff-chat-notification: "&8[&3&lFREEZE&8] &b%player% &fcan now chat with staff. You will receive their messages."
 freeze-chat-deactivated: "&8[&3&lFREEZE&8] &7Staff chat has been deactivated. You can now chat normally."
+already-frozen: "&8[&3&lFREEZE&8] &c%player% is already frozen."
 
 staffchat:
   toggle-on: "&aStaff chat mode activated."
@@ -183,6 +184,56 @@ examine:
   not-found: "&cPlayer &e%player% &cis not online."
   error: "&cAn error occurred while examining the player."
   usage: "&cusage: /examine <player>"
+
+  inventory-title: "&8Examining: &e%player%"
+
+  player-info:
+    title: "&a&lPlayer Information"
+    uuid: "&7UUID: &f%uuid%"
+    ping: "&7Ping: &f%ping%ms"
+    session-time: "&7Connected Time: &f%time%"
+
+  player-head:
+    title: "&e%player%"
+    health: "&7Life: &c%current%/%max%"
+    absorption: "&7Absorption: &e%absorption%"
+    hunger: "&7Hunger: &6%hunger%/20"
+    gamemode: "&7Gamemode: &f%gamemode%"
+    world: "&7World: &f%world%"
+    location: "&7Position: &f%location%"
+
+  potion-effects:
+    title: "&d&lActive Effects"
+    no-effects: "&7It has no active effects"
+    effect-format: "&7%effect%%amplifier%: &f%duration%"
+
+  speed-info:
+    title: "&f&lSPEED"
+    walk: "&7Walk: &f%speed%"
+    fly: "&7Fly: &f%speed%"
+    flying: "&7Flying: &f%status%"
+    allowed-fly: "&7Allowed to fly: &f%status%"
+
+  item-info:
+    separator: "&8&m------------------"
+    durability: "&7Durability: &f%current%/%max%"
+    enchantments: "&7Enchantments: &f%count%"
+
+  session-time:
+    estimated: "Estimated: %hours%h total"
+    not-available: "Not available"
+
+  messages:
+    player-offline: "&cThe player is no longer online."
+
+  warnings:
+    head-owner-error: "The owner of the head could not be established."
+    ping-error: "Could not get player ping"
+    absorption-error: "Error getting absorption value"
+
+  common:
+    yes: "YES"
+    no: "NO"
 
 support:
   sent: "&aYour support request has been sent to the staff. Please wait."

@@ -32,6 +32,7 @@ staff-chat:
   permission: "ryzenstaff.staffchat"
   cross-server-format: "%prefix% &3%player% &8(&6%server%&8)&8: &b%message%"
   command: "staffchat"
+  sound-enabled: true
   aliases:
     - "sc"
 
@@ -44,6 +45,7 @@ admin-chat:
   cross-server-format: "%prefix% &4%player% &8(&6%server%&8)&8: &c%message%"
   permission: "ryzenstaff.adminchat"
   command: "adminchat"
+  sound-enabled: true
   aliases:
     - "ac"
 

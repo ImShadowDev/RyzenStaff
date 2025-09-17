@@ -21,6 +21,7 @@ options:
   antispam-kills: true
   socialspy: true
   support: true
+  jail-control: true
 
 # --------------------------------------
 # Webhook messages Configuration
@@ -242,3 +243,51 @@ messages:
         - name: ":clock2: Date & Time"
           value: "%datetime%"
           inline: false
+
+    # --------------------------------------
+    # Jail System Webhook Configuration
+    # --------------------------------------
+    jail:
+      embed:
+        title: ":lock: Player Jailed"
+        description: "A player has been sent to jail by a staff member."
+        color: "#E74C3C"
+        image: "https://cdn.discordapp.com/attachments/1070000881824710750/1388733296959160432/RyzenStaff-Webhooks.png?ex=68620e2b&is=6860bcab&hm=1a69ea4f3533b59e6d25f0a3d5f37695d94ae6fa5561de84af129e1276652205&"
+        footer: "RyzenStaff Jail System - %date%"
+        fields:
+          - name: ":bust_in_silhouette: Player Jailed"
+            value: "%player%"
+            inline: true
+          - name: ":shield: Staff Member"
+            value: "%staff%"
+            inline: true
+          - name: ":hourglass: Duration"
+            value: "%duration%"
+            inline: true
+          - name: ":memo: Reason"
+            value: "%reason%"
+            inline: false
+          - name: ":green_circle: Player Status"
+            value: "Online"
+            inline: true
+          - name: ":clock2: Date & Time"
+            value: "%datetime%"
+            inline: false
+
+    unjail:
+      embed:
+        title: ":unlock: Player Released"
+        description: "A player has been released from jail by a staff member."
+        color: "#2ECC71"
+        image: "https://cdn.discordapp.com/attachments/1070000881824710750/1388733296959160432/RyzenStaff-Webhooks.png?ex=68620e2b&is=6860bcab&hm=1a69ea4f3533b59e6d25f0a3d5f37695d94ae6fa5561de84af129e1276652205&"
+        footer: "RyzenStaff Jail System - %date%"
+        fields:
+          - name: ":bust_in_silhouette: Player Released"
+            value: "%player%"
+            inline: true
+          - name: ":shield: Staff Member"
+            value: "%staff%"
+            inline: true
+          - name: ":clock2: Date & Time"
+            value: "%datetime%"
+            inline: false

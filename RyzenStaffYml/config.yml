@@ -63,6 +63,7 @@ support:
   enabled: true
   prefix: "&a[SUPPORT]"
   cooldown: 60
+  cross-server-format: "%prefix% &e%player% &8(&6%server%&8) &7needs help: &f%message%"
   aliases:
     - "helpop"
 

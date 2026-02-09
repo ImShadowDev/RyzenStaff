@@ -441,7 +441,7 @@ teleport-item:
 # --------------------------------------
 custom-staff-items:
   custom-fly:
-    enabled: true
+    enabled: false
     material: "FEATHER"
     material-disabled: "STRING"
     name-enabled: "&a&lFly: ON"

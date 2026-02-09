@@ -176,6 +176,14 @@ staffmode-commands:
   - ec
   - enderchest
 
+# Enable or disable the options you want to use
+modules:
+  admin-chat: true
+  staff-chat: true
+  vanish: true
+  jail: true
+  warn: true
+
 # --------------------------------------
 # Freeze Item
 # --------------------------------------
@@ -427,6 +435,25 @@ teleport-item:
     - "&7and teleport to any online player"
     - ""
   slot: 8
+
+# --------------------------------------
+# Custom Item (It follows the same format for creating custom items)
+# --------------------------------------
+custom-staff-items:
+  custom-fly:
+    enabled: true
+    material: "FEATHER"
+    material-disabled: "STRING"
+    name-enabled: "&a&lFly: ON"
+    name-disabled: "&c&lFly: OFF"
+    lore-enabled:
+      - "&aFlight enabled"
+    lore-disabled:
+      - "&cFlight disabled"
+    slot: 8
+    permission-see: ""
+    command-enabled: "fly %player% enable"
+    command-disabled: "fly %player% disable"
 
 # --------------------------------------
 # Teleport GUI Configuration
